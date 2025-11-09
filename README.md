@@ -72,7 +72,56 @@ The CG aims to develop:
 
 ---
 
-## 5. Participation
+## 5. Quick Start
+
+This example shows how to validate an agent definition against its schema and expand its semantic meaning using Python.
+
+**Prerequisites:**
+```bash
+pip install jsonschema pyld
+```
+
+**Example Code:**
+```python
+import json
+from jsonschema import validate
+from pyld import jsonld
+
+# 1. Load the agent definition and its schema
+with open('ontologies/examples/minimal-agent.jsonld', 'r') as f:
+    agent_doc = json.load(f)
+
+with open('ontologies/profiles/agent.jsonld', 'r') as f:
+    agent_schema = json.load(f)
+
+# 2. Validate the document against the schema
+try:
+    validate(instance=agent_doc, schema=agent_schema)
+    print("✅ Validation successful!")
+except Exception as e:
+    print(f"❌ Validation failed: {e}")
+
+# 3. Expand the document to see its full semantic meaning
+# (Note: for a real application, you would use a remote context)
+with open('ontologies/context/agent.jsonld', 'r') as f:
+    context_doc = json.load(f)
+
+expanded = jsonld.expand(agent_doc, {'@context': context_doc})
+print("\nExpanded JSON-LD:")
+print(json.dumps(expanded, indent=2))
+```
+
+---
+
+## 6. How to Contribute
+
+This is a community-driven project, and we welcome contributions of all kinds. Please see our **[Contribution Guidelines](CONTRIBUTING.md)** to learn how you can get involved, from proposing changes to submitting code.
+
+The best way to start is by opening a [GitHub Issue](https://github.com/slashlifeai/agent-ontology/issues) to discuss your ideas.
+
+---
+
+## 7. Participation
 
 The Community Group is open to all.
 
@@ -81,7 +130,7 @@ https://www.w3.org/community/blog/2025/11/09/proposed-group-semantic-agent-commu
 
 ---
 
-## 6. License
+## 8. License
 
 Ontology files and specifications will follow open licenses (e.g., W3C Software and Document License) to enable broad adoption.
 
