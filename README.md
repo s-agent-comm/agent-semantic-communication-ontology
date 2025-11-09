@@ -57,7 +57,7 @@ The CG seeks to develop:
 
 The Community Group is open to all.
 
-To join, visit:  https://www.w3.org/community/groups/proposed/#s-agent-comm
+To join, visit:  https://www.w3.org/community/blog/2025/11/09/proposed-group-semantic-agent-communication-community-group/
 (*Activation pending 5 supporters.*)
 
 ---
