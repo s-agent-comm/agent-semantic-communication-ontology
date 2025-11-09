@@ -73,6 +73,11 @@ We encourage you to explore each example to understand how the Agent Ontology ca
 *   **Key Concepts**: Business Model Transformation, Capability Evolution, Dynamic Delegation Scope, End-Consumer Interaction, Integrated Supply Chain.
 *   **Location**: `smart-thermostat-obm-odm-oem/`
 
+### 13. Federated Digital Identity for Global Fintech Onboarding (Detailed User Story)
+*   **Description**: Demonstrates how a user can leverage multiple national digital identity wallets (EUDI, TWDIW, JP MyNumber) to securely onboard with a foreign FinTech bank, showcasing cross-border identity verification and semantic mediation.
+*   **Key Concepts**: Multi-Agent Collaboration, Intent-Driven Workflow, Dynamic Delegation, Verifiable Credentials/Presentations, Semantic Mediation, Secure Execution Context, Security Binding, End-to-End Accountability.
+*   **Location**: `federated-digital-identity/`
+
 ---
 
 **How to Contribute**: If you have ideas for new examples or improvements to existing ones, please refer to the main [CONTRIBUTING.md](../../CONTRIBUTING.md) file and open an issue or pull request.

@@ -1,0 +1,247 @@
+{
+  "@context": [
+    "https://ns.slashlife.ai/agent/context/agent.jsonld",
+    "https://ns.slashlife.ai/agent/context/intent.jsonld",
+    "https://ns.slashlife.ai/agent/context/delegation.jsonld",
+    "https://ns.slashlife.ai/agent/context/capability.jsonld",
+    "https://ns.slashlife.ai/agent/context/security-binding.jsonld",
+    "https://ns.slashlife.ai/agent/context/execution-context.jsonld"
+  ],
+  "@graph": [
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#PersonalFinanceAgent",
+      "@type": "core:Agent",
+      "rdfs:label": "Kenji's Personal Finance Agent",
+      "agent:hasProfile": {
+        "@type": "agent:AgentProfile",
+        "agent:coreIdentity": {
+          "@type": "agent:AgentIdentity",
+          "agent:did": "did:example:kenji-finance-agent-1",
+          "agent:title": "Kenji's Personal Finance Agent",
+          "agent:version": "1.0.0"
+        },
+        "agent:purposeAndRole": {
+          "@type": "agent:PurposeRole",
+          "agent:objective": "To manage Kenji's personal financial operations, including account onboarding and identity verification.",
+          "agent:owner": "did:example:kenji-user-id"
+        },
+        "agent:capabilities": {
+          "@type": "agent:CapabilityBundle",
+          "agent:skill": [
+            "Account Onboarding",
+            "Identity Verification Orchestration",
+            "Credential Aggregation",
+            "Verifiable Presentation Generation"
+          ]
+        }
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#BerlinFinTechOnboardingAgent",
+      "@type": "core:Agent",
+      "rdfs:label": "Berlin FinTech Bank Onboarding Agent",
+      "agent:hasProfile": {
+        "@type": "agent:AgentProfile",
+        "agent:coreIdentity": {
+          "@type": "agent:AgentIdentity",
+          "agent:did": "did:example:berlin-fintech-onboarding-agent-1",
+          "agent:title": "Berlin FinTech Bank Onboarding Agent",
+          "agent:version": "1.0.0"
+        },
+        "agent:purposeAndRole": {
+          "@type": "agent:PurposeRole",
+          "agent:objective": "To securely onboard new customers, performing KYC and AML checks.",
+          "agent:owner": "did:example:berlin-fintech-bank"
+        },
+        "agent:capabilities": {
+          "@type": "agent:CapabilityBundle",
+          "agent:skill": [
+            "KYC Verification",
+            "AML Compliance",
+            "Verifiable Presentation Validation",
+            "Account Provisioning"
+          ]
+        }
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#JPMynumberWalletAgent",
+      "@type": "core:Agent",
+      "rdfs:label": "JP MyNumber Wallet Agent",
+      "agent:hasProfile": {
+        "@type": "agent:AgentProfile",
+        "agent:coreIdentity": {
+          "@type": "agent:AgentIdentity",
+          "agent:did": "did:example:jp-mynumber-wallet-agent-1",
+          "agent:title": "JP MyNumber Wallet Agent",
+          "agent:version": "1.0.0"
+        },
+        "agent:purposeAndRole": {
+          "@type": "agent:PurposeRole",
+          "agent:objective": "To securely store and selectively present Kenji's Japanese digital identity credentials.",
+          "agent:owner": "did:example:kenji-user-id"
+        },
+        "agent:capabilities": {
+          "@type": "agent:CapabilityBundle",
+          "agent:skill": [
+            "Credential Storage",
+            "Verifiable Credential Issuance",
+            "Selective Disclosure"
+          ]
+        }
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#TWDIWAgent",
+      "@type": "core:Agent",
+      "rdfs:label": "TWDIW Agent (Taiwan Digital Identity Wallet)",
+      "agent:hasProfile": {
+        "@type": "agent:AgentProfile",
+        "agent:coreIdentity": {
+          "@type": "agent:AgentIdentity",
+          "agent:did": "did:example:twdiw-agent-1",
+          "agent:title": "TWDIW Agent",
+          "agent:version": "1.0.0"
+        },
+        "agent:purposeAndRole": {
+          "@type": "agent:PurposeRole",
+          "agent:objective": "To securely store and selectively present Kenji's Taiwanese digital identity credentials.",
+          "agent:owner": "did:example:kenji-user-id"
+        },
+        "agent:capabilities": {
+          "@type": "agent:CapabilityBundle",
+          "agent:skill": [
+            "Credential Storage",
+            "Verifiable Credential Issuance",
+            "Selective Disclosure"
+          ]
+        }
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#KenjiOnboardingIntent",
+      "@type": "core:Intent",
+      "rdfs:label": "Kenji's Intent to Open Investment Account",
+      "intent:objective": "Open a high-yield investment account with Berlin FinTech Bank.",
+      "intent:input": "Kenji's personal financial goals and investment preferences.",
+      "intent:output": "Activated investment account with Berlin FinTech Bank."
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#KYCRequirementList",
+      "@type": "core:Artifact",
+      "rdfs:label": "Berlin FinTech Bank KYC Requirement List",
+      "core:description": "Required VCs: Primary Identity (e.g., Passport), Proof of Residency, Tax Identification Number. Must be EUDI-compliant."
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#Delegation_FinanceToJPMynumber",
+      "@type": "delegation:Delegation",
+      "delegation:delegatedBy": {
+        "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#PersonalFinanceAgent"
+      },
+      "delegation:delegatesTo": {
+        "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#JPMynumberWalletAgent"
+      },
+      "delegation:delegationScope": "Provide Verifiable Credential containing primary citizen identity and Japanese Tax Identification Number for FinTech onboarding."
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#Delegation_FinanceToTWDIW",
+      "@type": "delegation:Delegation",
+      "delegation:delegatedBy": {
+        "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#PersonalFinanceAgent"
+      },
+      "delegation:delegatesTo": {
+        "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#TWDIWAgent"
+      },
+      "delegation:delegationScope": "Provide Verifiable Credential containing Taiwanese Alien Resident Certificate and current residential address for FinTech onboarding."
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#JPMynumberVC",
+      "@type": "core:Artifact",
+      "rdfs:label": "JP MyNumber Verifiable Credential",
+      "core:description": "Verifiable Credential from JP MyNumber containing Kenji's primary identity and Japanese TIN.",
+      "security:securityBinding": {
+        "@type": "security:SecurityBinding",
+        "security:cryptographicBinding": "JWS",
+        "security:trustModel": "JP-Government-PKI"
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#TWDIW_VC",
+      "@type": "core:Artifact",
+      "rdfs:label": "TWDIW Verifiable Credential",
+      "core:description": "Verifiable Credential from TWDIW containing Kenji's Taiwanese ARC and residential address.",
+      "security:securityBinding": {
+        "@type": "security:SecurityBinding",
+        "security:cryptographicBinding": "JWS",
+        "security:trustModel": "TW-Government-PKI"
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#GenerateEUDIVPAction",
+      "@type": "core:Action",
+      "rdfs:label": "Generate EUDI-Compatible Verifiable Presentation",
+      "core:contextOf": {
+        "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#PersonalFinanceAgent"
+      },
+      "core:producesArtifact": {
+        "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#EUDI_Compatible_VP"
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#EUDI_Compatible_VP",
+      "@type": "core:Artifact",
+      "rdfs:label": "EUDI-Compatible Verifiable Presentation",
+      "core:description": "Aggregated VCs from JP MyNumber and TWDIW, formatted as an EUDI-compliant Verifiable Presentation.",
+      "security:securityBinding": {
+        "@type": "security:SecurityBinding",
+        "security:cryptographicBinding": "JWS",
+        "security:trustModel": "eIDAS-compliant"
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#GlobalKYCExecutionContext",
+      "@type": "execution-context:ExecutionContext",
+      "rdfs:label": "Global KYC Execution Context",
+      "execution-context:trustAnchors": [
+        "https://pki.europa.eu/",
+        "https://pki.japan.go.jp/",
+        "https://pki.taiwan.gov.tw/"
+      ],
+      "execution-context:policy": "EU-Japan-Taiwan Data Exchange Agreement for Digital Identity"
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#SubmitEUDIVPAction",
+      "@type": "core:Action",
+      "rdfs:label": "Submit EUDI-Compatible Verifiable Presentation",
+      "core:contextOf": {
+        "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#GlobalKYCExecutionContext"
+      },
+      "core:producesArtifact": {
+        "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#SubmissionConfirmation"
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#SubmissionConfirmation",
+      "@type": "core:Artifact",
+      "rdfs:label": "VP Submission Confirmation",
+      "core:description": "Confirmation of successful submission of EUDI-Compatible VP to Berlin FinTech Bank."
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#VerifyEUDIVPAction",
+      "@type": "core:Action",
+      "rdfs:label": "Verify EUDI-Compatible Verifiable Presentation",
+      "core:contextOf": {
+        "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#BerlinFinTechOnboardingAgent"
+      },
+      "core:producesArtifact": {
+        "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#InvestmentAccountDetails"
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/federated-digital-identity#InvestmentAccountDetails",
+      "@type": "core:Artifact",
+      "rdfs:label": "Investment Account Details",
+      "core:description": "Kenji's new investment account successfully opened with Berlin FinTech Bank. Account ID: DE1234567890."
+    }
+  ]
+}
