@@ -83,6 +83,11 @@ We encourage you to explore each example to understand how the Agent Ontology ca
 *   **Key Concepts**: Remote Attestation, Hardware Root of Trust, DID for Hardware, Verifiable Boot Chain, End-to-End Trust, Security Binding (TPM Quote).
 *   **Location**: `secure-execution-attestation/`
 
+### 15. AI Liability Insurance x UL Certification (Detailed User Story)
+*   **Description**: Models a complete ecosystem of trust for safety-critical AI, involving third-party certification (like UL), specialized liability insurance, and immutable operational data for transparent claims adjudication in a scenario with an autonomous surgical robot.
+*   **Key Concepts**: AI Risk Management, Third-Party Certification, Verifiable Insurance Policies, Ledger-Based Adjudication, End-to-End Trust in High-Stakes Environments.
+*   **Location**: `ai-liability-insurance-ul-certification/`
+
 ---
 
 **How to Contribute**: If you have ideas for new examples or improvements to existing ones, please refer to the main [CONTRIBUTING.md](../../CONTRIBUTING.md) file and open an issue or pull request.

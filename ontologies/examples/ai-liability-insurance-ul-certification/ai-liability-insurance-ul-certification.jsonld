@@ -1,0 +1,265 @@
+{
+  "@context": [
+    "https://ns.slashlife.ai/agent/context/agent.jsonld",
+    "https://ns.slashlife.ai/agent/context/intent.jsonld",
+    "https://ns.slashlife.ai/agent/context/delegation.jsonld",
+    "https://ns.slashlife.ai/agent/context/capability.jsonld",
+    "https://ns.slashlife.ai/agent/context/security-binding.jsonld",
+    "https://ns.slashlife.ai/agent/context/execution-context.jsonld",
+    "https://ns.slashlife.ai/agent/context/ledger.jsonld",
+    "https://ns.slashlife.ai/agent/context/payment.jsonld"
+  ],
+  "@graph": [
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#Surgical_Robot_Agent",
+      "@type": "core:Agent",
+      "rdfs:label": "Autonomous Surgical Robot #SR-9001",
+      "agent:hasProfile": {
+        "@type": "agent:AgentProfile",
+        "agent:coreIdentity": {
+          "@type": "agent:AgentIdentity",
+          "agent:did": "did:example:surgical-robot-SN-9001",
+          "agent:title": "Autonomous Surgical Robot #SR-9001",
+          "agent:version": "4.2.1"
+        },
+        "agent:purposeAndRole": {
+          "@type": "agent:PurposeRole",
+          "agent:objective": "To perform high-precision surgical tasks under the delegation of a qualified surgeon.",
+          "agent:owner": "did:example:city-hospital"
+        },
+        "agent:capabilities": {
+          "@type": "agent:CapabilityBundle",
+          "agent:skill": [
+            "Perform 0.1mm precision cutting",
+            "Suture tissue",
+            "Laser ablation"
+          ]
+        }
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#UL_Certification_Agent",
+      "@type": "core:Agent",
+      "rdfs:label": "UL Certification Agent for AI Systems",
+      "agent:hasProfile": {
+        "@type": "agent:AgentProfile",
+        "agent:coreIdentity": {
+          "@type": "agent:AgentIdentity",
+          "agent:did": "did:web:ul.com",
+          "agent:title": "UL Certification Agent for AI Systems",
+          "agent:version": "1.0.0"
+        },
+        "agent:purposeAndRole": {
+          "@type": "agent:PurposeRole",
+          "agent:objective": "To test and certify the safety and capabilities of AI agents against established standards.",
+          "agent:owner": "did:web:ul.com"
+        },
+        "agent:capabilities": {
+          "@type": "agent:CapabilityBundle",
+          "agent:skill": [
+            "AI Capability Verification",
+            "Safety Constraint Testing",
+            "Verifiable Certificate Issuance"
+          ]
+        }
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#Insurer_Underwriting_Agent",
+      "@type": "core:Agent",
+      "rdfs:label": "Insurer Underwriting Agent for AI Liability",
+      "agent:hasProfile": {
+        "@type": "agent:AgentProfile",
+        "agent:coreIdentity": {
+          "@type": "agent:AgentIdentity",
+          "agent:did": "did:web:ai-insurer.com",
+          "agent:title": "Insurer Underwriting Agent for AI Liability",
+          "agent:version": "1.0.0"
+        },
+        "agent:purposeAndRole": {
+          "@type": "agent:PurposeRole",
+          "agent:objective": "To underwrite AI liability insurance policies based on risk assessment and third-party certifications.",
+          "agent:owner": "did:web:ai-insurer.com"
+        },
+        "agent:capabilities": {
+          "@type": "agent:CapabilityBundle",
+          "agent:skill": [
+            "Risk Assessment",
+            "Policy Underwriting",
+            "Verifiable Credential Validation"
+          ]
+        }
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#Insurer_Claims_Adjudication_Agent",
+      "@type": "core:Agent",
+      "rdfs:label": "Insurer Claims Adjudication Agent",
+      "agent:hasProfile": {
+        "@type": "agent:AgentProfile",
+        "agent:coreIdentity": {
+          "@type": "agent:AgentIdentity",
+          "agent:did": "did:web:ai-insurer.com:claims",
+          "agent:title": "Insurer Claims Adjudication Agent",
+          "agent:version": "1.0.0"
+        },
+        "agent:purposeAndRole": {
+          "@type": "agent:PurposeRole",
+          "agent:objective": "To adjudicate insurance claims by analyzing immutable operational data from insured AI agents.",
+          "agent:owner": "did:web:ai-insurer.com"
+        },
+        "agent:capabilities": {
+          "@type": "agent:CapabilityBundle",
+          "agent:skill": [
+            "Ledger Analysis",
+            "Trace Event Verification",
+            "Liability Determination"
+          ]
+        }
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#Surgeon_Agent",
+      "@type": "core:Agent",
+      "rdfs:label": "Dr. Alice Turing, Chief Surgeon",
+      "agent:hasProfile": {
+        "@type": "agent:AgentProfile",
+        "agent:coreIdentity": {
+          "@type": "agent:AgentIdentity",
+          "agent:did": "did:example:surgeon-alice-turing",
+          "agent:title": "Dr. Alice Turing, Chief Surgeon",
+          "agent:version": "1.0.0"
+        },
+        "agent:purposeAndRole": {
+          "@type": "agent:PurposeRole",
+          "agent:objective": "To supervise and direct surgical procedures, delegating specific tasks to autonomous systems.",
+          "agent:owner": "did:example:city-hospital"
+        }
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#CertifyRobotAction",
+      "@type": "core:Action",
+      "rdfs:label": "Certify Surgical Robot #SR-9001",
+      "core:contextOf": {
+        "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#UL_Certification_Agent"
+      },
+      "core:producesArtifact": {
+        "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#UL_Safety_Certificate"
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#UL_Safety_Certificate",
+      "@type": "core:Artifact",
+      "rdfs:label": "UL Safety Certificate for Surgical Robot #SR-9001",
+      "core:description": "Certifies that the agent 'did:example:surgical-robot-SN-9001' has been tested and conforms to safety standard UL-AI-2900. Certified capabilities: 'Perform 0.1mm precision cutting', 'Suture tissue', 'Laser ablation'. Operational constraints: Max speed 1mm/s.",
+      "security:securityBinding": {
+        "@type": "security:SecurityBinding",
+        "security:cryptographicBinding": "JWS",
+        "security:trustModel": "UL Certified Issuer",
+        "security:signedBy": {
+          "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#UL_Certification_Agent"
+        }
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#InsureRobotIntent",
+      "@type": "core:Intent",
+      "rdfs:label": "Intent to Insure Surgical Robot #SR-9001",
+      "intent:objective": "To obtain comprehensive liability insurance for Surgical Robot #SR-9001, based on its UL certification."
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#IssuePolicyAction",
+      "@type": "core:Action",
+      "rdfs:label": "Issue Insurance Policy for Surgical Robot #SR-9001",
+      "core:contextOf": {
+        "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#Insurer_Underwriting_Agent"
+      },
+      "core:producesArtifact": {
+        "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#Insurance_Policy"
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#Insurance_Policy",
+      "@type": "core:Artifact",
+      "rdfs:label": "AI Liability Insurance Policy #AI-LIAB-123",
+      "core:description": "Policy covering operations of 'did:example:surgical-robot-SN-9001'. Coverage is contingent upon operations being within the scope of the referenced UL Safety Certificate.",
+      "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#referencesCertificate": {
+        "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#UL_Safety_Certificate"
+      },
+      "security:securityBinding": {
+        "@type": "security:SecurityBinding",
+        "security:cryptographicBinding": "JWS",
+        "security:trustModel": "Insurer Certified Issuer",
+        "security:signedBy": {
+          "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#Insurer_Underwriting_Agent"
+        }
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#DelegateSurgicalTask",
+      "@type": "delegation:Delegation",
+      "delegation:delegatedBy": {
+        "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#Surgeon_Agent"
+      },
+      "delegation:delegatesTo": {
+        "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#Surgical_Robot_Agent"
+      },
+      "delegation:delegationScope": "Perform a 5cm linear incision at coordinates (X,Y,Z), depth 2mm, speed <= 1mm/s."
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#PerformIncisionAction",
+      "@type": "core:Action",
+      "rdfs:label": "Perform Surgical Incision",
+      "core:contextOf": {
+        "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#DelegateSurgicalTask"
+      },
+      "core:producesArtifact": {
+        "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#SurgicalOutcome"
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#SurgicalOutcome",
+      "@type": "core:Artifact",
+      "rdfs:label": "Surgical Outcome for Incision",
+      "core:description": "Incision performed. Deviation of +1mm from specified depth detected."
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#FileClaimIntent",
+      "@type": "core:Intent",
+      "rdfs:label": "Intent to File Claim for Incident #INC-5678",
+      "intent:objective": "To file an insurance claim for patient injury resulting from operational deviation during surgery."
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#AnalyzeIncidentTraceAction",
+      "@type": "core:Action",
+      "rdfs:label": "Analyze Incident Trace from Ledger",
+      "core:contextOf": {
+        "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#Insurer_Claims_Adjudication_Agent"
+      },
+      "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#accessesLedger": {
+        "@id": "https://ledger.city-hospital.com/robot-sr-9001"
+      },
+      "core:producesArtifact": {
+        "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#AdjudicationReport"
+      }
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#AdjudicationReport",
+      "@type": "core:Artifact",
+      "rdfs:label": "Adjudication Report for Incident #INC-5678",
+      "core:description": "Analysis of immutable trace data confirms the surgical robot deviated from its delegated task scope while operating within its certified capabilities. The incident is covered by policy #AI-LIAB-123."
+    },
+    {
+      "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#SettleClaimAction",
+      "@type": "payment:Payment",
+      "rdfs:label": "Settle Insurance Claim",
+      "core:contextOf": {
+        "@id": "https://ns.slashlife.ai/agent/examples/ai-liability-insurance-ul-certification#Insurer_Claims_Adjudication_Agent"
+      },
+      "payment:amount": "500000",
+      "payment:currency": "USD",
+      "payment:payee": "did:example:city-hospital"
+    }
+  ]
+}
