@@ -42,7 +42,7 @@ This project extends Web principles into autonomous agent interaction:
 - `.ttl` ontology definitions  
 - `context/`: JSON‑LD contexts  
 - `profiles/`: JSON schema validation profiles  
-- `examples/`: Usage samples  
+- `examples/`: Detailed usage samples and real-world user stories (e.g., multi-agent workflows, OBM/ODM/OEM business models). Refer to individual `README.md` files within this directory for full details.  
 
 ### **2.2 `specs/` — Human‑Readable Specifications**
 - Design rationale, conceptual explanations, and narrative specifications  
