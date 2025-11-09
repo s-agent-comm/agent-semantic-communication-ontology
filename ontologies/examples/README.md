@@ -88,6 +88,11 @@ We encourage you to explore each example to understand how the Agent Ontology ca
 *   **Key Concepts**: AI Risk Management, Third-Party Certification, Verifiable Insurance Policies, Ledger-Based Adjudication, End-to-End Trust in High-Stakes Environments.
 *   **Location**: `ai-liability-insurance-ul-certification/`
 
+### 16. The Bachata Influencer: An Agent-Driven Social Economy (Detailed User Story)
+*   **Description**: A modern, creative-economy use case modeling a personal agent for a Bachata dancer and aspiring influencer. It covers the full lifecycle from event discovery, style recommendations, and automated registration to content creation, social media posting, and brand sponsorship.
+*   **Key Concepts**: Personal Agent, Creator Economy, Social/Economic Integration, Modeling Subjective Tasks, Digital-Physical Lifecycle.
+*   **Location**: `bachata-influencer-social-economy/`
+
 ---
 
 **How to Contribute**: If you have ideas for new examples or improvements to existing ones, please refer to the main [CONTRIBUTING.md](../../CONTRIBUTING.md) file and open an issue or pull request.
