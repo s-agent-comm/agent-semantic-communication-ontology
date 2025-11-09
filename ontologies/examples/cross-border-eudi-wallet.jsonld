@@ -1,0 +1,111 @@
+{
+  "@context": [
+    "https://ns.slashlife.ai/agent/context/agent.jsonld",
+    "https://ns.slashlife.ai/agent/context/identity.jsonld",
+    "https://ns.slashlife.ai/agent/context/capability.jsonld",
+    "https://ns.slashlife.ai/agent/context/delegation.jsonld",
+    "https://ns.slashlife.ai/agent/context/ledger.jsonld"
+  ],
+  "id": "https://ns.slashlife.ai/agent/examples#TWComplianceAgent",
+  "type": "agent:Agent",
+  "title": "Taiwan SME EUDI Wallet Compliance Agent",
+  "version": "1.0.0",
+  "state": "agent:Active",
+  "objective": "Handle all EUDI Wallet interactions for a Taiwan SME entering the EU market.",
+  "ownedBy": "did:tw:company12345",
+  "hasIdentity": [
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#EUDIWalletIdentity",
+      "type": "id:Identity",
+      "identityId": "eudi-wallet",
+      "identityType": "EUDI",
+      "did": "did:ebsi:z12A45xyz",
+      "keyManagementSystem": "EBSI-KMS"
+    },
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#TaiwanCorporateIdentity",
+      "type": "id:Identity",
+      "identityId": "taiwan-corp",
+      "identityType": "TW-DIW",
+      "did": "did:tw:corp:5566xyz"
+    },
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#StablecoinSettlementIdentity",
+      "type": "id:Identity",
+      "identityId": "stablecoin",
+      "identityType": "ETH-Settlement",
+      "did": "did:eth:0xabc123456def",
+      "capabilities": "stable-value-transfer"
+    }
+  ],
+  "hasCapability": [
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#SubmitKYC",
+      "type": "cap:Capability",
+      "capabilityId": "submit-kyc",
+      "description": "Submit KYC/AML documents through EUDI Wallet interfaces."
+    },
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#RetrieveEUDICredential",
+      "type": "cap:Capability",
+      "capabilityId": "retrieve-credential",
+      "description": "Fetch verifiable credentials issued by Portuguese authorities."
+    },
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#CrossBorderFiling",
+      "type": "cap:Capability",
+      "capabilityId": "crossborder-filing",
+      "description": "Submit corporate filings through EU gateway using EUDI-backed signatures."
+    },
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#StablecoinPayment",
+      "type": "cap:Capability",
+      "capabilityId": "settlement",
+      "description": "Execute stablecoin settlement for cross-border services (did:eth / did:ebsi)."
+    }
+  ],
+  "delegationRecord": {
+    "id": "https://ns.slashlife.ai/agent/examples#DelegationRecord1",
+    "type": "del:Delegation",
+    "delegator": "did:tw:corp:5566xyz",
+    "delegatee": "https://ns.slashlife.ai/agent/examples#TWComplianceAgent",
+    "scope": "EU onboarding, EUDI Wallet transactions, filings, KYC handling",
+    "validFrom": "2025-10-01T00:00:00Z",
+    "validUntil": "2026-10-01T00:00:00Z",
+    "constraints": "Use only registered identities; all actions must be ledger-recorded"
+  },
+  "ledgerEntries": [
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#LedgerEntry1",
+      "type": "ledger:RuntimeLedgerEvent",
+      "eventId": "ledger-eu-0001",
+      "timestamp": "2025-11-09T08:00:00Z",
+      "recordsAction": "https://ns.slashlife.ai/agent/examples#SubmitKYC",
+      "note": "Submitted KYC to Banco de Portugal via EUDI Wallet."
+    },
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#LedgerEntry2",
+      "type": "ledger:RuntimeLedgerEvent",
+      "eventId": "ledger-eu-0002",
+      "timestamp": "2025-11-09T08:30:00Z",
+      "recordsAction": "https://ns.slashlife.ai/agent/examples#RetrieveEUDICredential",
+      "note": "Retrieved Verified Corporate Registration Credential from Portuguese Business Registry."
+    },
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#LedgerEntry3",
+      "type": "ledger:RuntimeLedgerEvent",
+      "eventId": "ledger-eu-0003",
+      "timestamp": "2025-11-09T10:00:00Z",
+      "recordsAction": "https://ns.slashlife.ai/agent/examples#CrossBorderFiling",
+      "note": "Filed cross-border corporate data using EUDI-backed signature."
+    },
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#LedgerEntry4",
+      "type": "ledger:RuntimeLedgerEvent",
+      "eventId": "ledger-eu-0100",
+      "timestamp": "2025-11-09T11:00:00Z",
+      "recordsAction": "https://ns.slashlife.ai/agent/examples#StablecoinPayment",
+      "note": "Executed EUR-stable-value cross-border payment via did:eth settlement channel."
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "@context": [
+    "https://ns.slashlife.ai/agent/context/agent.jsonld",
+    "https://ns.slashlife.ai/agent/context/capability.jsonld",
+    "https://ns.slashlife.ai/agent/context/delegation.jsonld",
+    "https://ns.slashlife.ai/agent/context/ledger.jsonld"
+  ],
+  "id": "https://ns.slashlife.ai/agent/examples#runnerAgent",
+  "type": "agent:Agent",
+  "agentId": "agent:treadmill-runner-001",
+  "version": "1.0.0",
+  "title": "Treadmill MVS Runtime Agent",
+  "hasCapability": [
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#cap.executeWorkout",
+      "type": "agent:Capability",
+      "capabilityId": "exec.workout",
+      "description": "Execute a structured treadmill session based on semantic workout specification."
+    },
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#cap.monitorSafety",
+      "type": "agent:Capability",
+      "capabilityId": "monitor.safety",
+      "description": "Monitor heart rate, stride pattern, and device state; trigger safety stop."
+    }
+  ],
+  "hasSkill": [
+    "real-time-interpretation",
+    "device-control"
+  ],
+  "hasPersona": "calm-operational",
+  "supportsLanguage": "zh-TW",
+  "supportsTone": "Level-4-operational",
+  "triggeredBy": {
+    "id": "https://ns.slashlife.ai/agent/examples#trigger.startWorkout",
+    "type": "agent:Trigger",
+    "triggerType": "user_intent",
+    "source": "voice_command"
+  },
+  "acceptsInput": [
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#input.userProfile",
+      "type": "agent:Input",
+      "name": "userProfile",
+      "dataType": "application/json",
+      "description": "Age, resting HR, fitness level."
+    },
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#input.workoutSpec",
+      "type": "agent:Input",
+      "name": "workoutSpec",
+      "dataType": "application/json",
+      "description": "Semantic workout program generated via MVS."
+    }
+  ],
+  "producesOutput": [
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#output.sessionLog",
+      "type": "agent:Output",
+      "name": "sessionLog",
+      "dataType": "application/json"
+    },
+    {
+      "id": "https://ns.slashlife.ai/agent/examples#output.ledgerEvent",
+      "type": "agent:Output",
+      "name": "ledgerEvent",
+      "dataType": "json-ld",
+      "description": "Verifiable execution event stored in the semantic ledger."
+    }
+  ],
+  "delegationChain": {
+    "id": "https://ns.slashlife.ai/agent/examples#delegSession",
+    "type": "deleg:Delegation",
+    "delegationId": "deleg:workout-session-001",
+    "delegator": "agent:mvs-compiler",
+    "delegatee": "agent:treadmill-runner-001",
+    "scope": "execute_workout",
+    "issuedAt": "2025-11-09T01:20:00Z",
+    "validUntil": "2025-11-09T02:00:00Z",
+    "justification": "MVS compiler generated a valid semantic workout specification."
+  },
+  "ledgerEvent": {
+    "id": "https://ns.slashlife.ai/agent/examples#ledgerEvt001",
+    "type": "ledger:LedgerEvent",
+    "eventId": "ledg:treadmill-session-evt-001",
+    "agent": "agent:treadmill-runner-001",
+    "action": "executeWorkout",
+    "artifact": "spec://workout/semantic/interval-001",
+    "timestamp": "2025-11-09T01:22:41Z",
+    "result": "completed",
+    "signature": "z6Mkh...X2",
+    "boundDelegation": "https://ns.slashlife.ai/agent/examples#delegSession"
+  }
+}
