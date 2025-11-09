@@ -1,26 +1,26 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix agent-profile: <https://ns.slashlife.ai/agent/agent-profile#> .
+@prefix payment: <https://ns.slashlife.ai/agent/payment#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-# -- Shape for agent-profile:AgentProfile --
-agent-profile:AgentProfileShape
+# -- Shape for payment:PaymentIntent --
+payment:PaymentIntentShape
     a sh:NodeShape ;
-    sh:targetClass agent-profile:AgentProfile ;
+    sh:targetClass payment:PaymentIntent ;
     sh:property [
-        sh:path agent-profile:hasPersonality ;
+        sh:path payment:payer ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:nodeKind sh:IRI ;
     ] ;
     sh:property [
-        sh:path agent-profile:usesLanguage ;
+        sh:path payment:payee ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:nodeKind sh:IRI ;
     ] ;
     sh:property [
-        sh:path agent-profile:hasToneModel ;
+        sh:path payment:amount ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:nodeKind sh:IRI ;
+        sh:datatype xsd:decimal ;
     ] .
