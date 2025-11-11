@@ -62,3 +62,5 @@ It only provides machine-verifiable semantic structures usable by such framework
 8. Runtime Implementations or SDKs
 The CG does not produce executable software, agents, runtimes, or OS implementations.
 Reference code may be published, but not standardized.
+9. Conflict Resolution Mechanisms
+The CG does not define specific mechanisms for resolving conflicts (e.g., CRDT, OT, Byzantine fault tolerance). These are implementation choices left to downstream systems and governance frameworks.
