@@ -6,9 +6,9 @@ We welcome contributions from all members of the community! This document outlin
 
 The best way to join the effort is to get involved in the conversation.
 
-1.  **Join the W3C Community Group:** This is the central hub for all discussions. [**Click here to join and participate.**](https://www.w3.org/community/groups/proposal/...)
+1.  **Join the W3C Community Group:** This is the central hub for all discussions. [**Click here to join and participate.**](https://www.w3.org/community/blog/2025/11/09/proposed-group-semantic-agent-communication-community-group/)
 2.  **Familiarize yourself with the project:** Read the `README.md` and `specs/Explainer.md` to understand the project's goals and technical foundations.
-3.  **Review our proposal:** Read our [W3C Community Group proposal](https://www.w3.org/community/groups/proposal/...) and see the vision we've laid out.
+3.  **Review our proposal:** Read our [W3C Community Group proposal](https://www.w3.org/community/blog/2025/11/09/proposed-group-semantic-agent-communication-community-group/) and see the vision we've laid out.
 
 ## How to Provide Feedback
 
