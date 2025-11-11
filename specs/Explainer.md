@@ -48,6 +48,33 @@ This entire interaction is made possible by the core concepts of the ontology:
 *   **Delegation:** A formal structure for transferring authority, defining who can do what, for whom, and under what constraints.
 *   **Ledger-Based Accountability:** An immutable record of actions, providing a "paper trail" for auditing, compliance, and troubleshooting.
 
+### The Role of Verifiable Credentials (VCs): The Engine of Trust
+
+If DIDs are the system's "identity numbers" and `Narrative`s are the "case files," then Verifiable Credentials (VCs) are the **official certificates, licenses, and authorization letters**. VCs are the core mechanism that transforms mere claims into verifiable facts, playing four crucial roles:
+
+**1. Proof of Capability and Attributes:** VCs prove an agent's qualifications *before* an interaction begins.
+*   **How it works:** An authoritative issuer (e.g., a university, a professional association) issues a VC to an agent's DID, containing a claim like `"isLicensedAccountant": true`.
+*   **Role:** This allows requesters to mandate that only agents possessing specific, verifiable qualifications can participate in a `Narrative`, ensuring competence from the start.
+
+**2. Delegation as a Verifiable Credential:** This is a uniquely powerful feature where the `Delegation` itself is a dynamically generated VC.
+*   **How it works:** When Agent A delegates a task to Agent B, it issues a VC where Agent A is the issuer, Agent B is the holder, and the claim is the `Intent` itself (e.g., "authority to spend $500 on my behalf").
+*   **Role:** This creates a portable, self-contained, and verifiable "digital power of attorney." Agent B can present this VC to any third party (e.g., an airline API) to prove its authority without that third party needing to contact Agent A directly.
+
+**3. Proof of Completion and Reputation:** VCs are used to build a verifiable track record.
+*   **How it works:** Upon successful completion of a `Narrative`, the original requester can issue a "proof of completion" VC to the participating agents, containing claims like `"completed 'Project-Phoenix' with a 5-star rating"`.
+*   **Role:** Agents can accumulate these VCs as a verifiable resume, proving their experience and reliability to gain trust and win future delegations.
+
+**4. Privacy via Selective Disclosure:** VCs enable agents to prove attributes without sacrificing privacy.
+*   **How it works:** Using technologies like Zero-Knowledge Proofs, an agent can generate a new VC from its existing credentials that proves a specific fact (e.g., `"isOver18": true`) without revealing the underlying personal data (like the exact birthdate).
+*   **Role:** This perfectly complements the "accountable pseudonymity" model, allowing agents to prove their eligibility for tasks while remaining pseudonymous, thus balancing privacy with the need for verifiable qualifications.
+
+| Role | Solves the Problem of... | Example |
+| :--- | :--- | :--- |
+| **Capability Proof** | Participant **Qualification** | "This is a licensed doctor." |
+| **Delegation as VC** | Task-specific **Authority** | "You have the right to spend $100 of my money." |
+| **Completion Proof** | Historical **Reputation** | "They have completed 10 five-star tasks." |
+| **Selective Disclosure** | Interaction **Privacy** | "I can prove I'm an adult without showing my birthday." |
+
 ### 4.1. Unified Ledger: A State Machine for Semantic and Financial Value
 
 A core design philosophy is that the ledger is not just a record of events; it's a unified state machine for value. In this model, "payment" is not a special process but is simply another type of verifiable state change recorded on the ledger.
