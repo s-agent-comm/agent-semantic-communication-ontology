@@ -208,6 +208,18 @@ Each `Narrative` is identified by a unique `Narrative-ID`. This ID serves as:
 
 This Unified Narrative model transforms the system from a transaction processor into a **decentralized, verifiable, shared narrative machine**, where the system itself is a living, evolving story of interactions.
 
+### 5.4. Conflict Non-Resolution: The "Lazy Consensus" Model
+
+A critical design feature of the `Narrative` model is that it **does not natively handle or resolve conflicts**. Instead, it adopts a principle of **"Lazy Consensus."**
+
+Traditional consensus systems (often found in blockchains) work diligently to prevent conflicts and ensure a single, canonical state at all times. This "eager" approach is computationally expensive and can create bottlenecks. Our model takes a different approach:
+
+1.  **Record Everything:** The `Narrative`'s only job is to be an immutable, append-only log. It will faithfully record all `CommunicativeAct`s as they are signed, even if they are logically contradictory (e.g., two agents accepting the same exclusive task).
+2.  **Separate Recording from Interpretation:** The ontology deliberately separates the act of *recording* an event from the act of *interpreting* its validity. The `Narrative` is the objective, verifiable record of what was said, not a judgment on its meaning or outcome.
+3.  **Resolution is the Observer's Role:** "Consensus" or the resolution of a conflict is an emergent property, determined *lazily* by an observer (another agent, a user, or an automated arbitration system) that reads the `Narrative`. This observer applies its own business logic to determine the "correct" state. For example, it might enforce a "first-to-claim-wins" rule, or it might invalidate both contradictory acts.
+
+This approach provides immense flexibility. It allows different observers to interpret the same `Narrative` according to different rule sets (e.g., legal frameworks, business policies), rather than enforcing a single, universal set of conflict-resolution rules at the foundational layer. It shifts the burden of state management from the core protocol to the application layer, where it belongs.
+
 ### 5.5. Explaining the "Why": Narrative as the Foundation for AI Explainability
 
 A core challenge in AI is explainability (XAI)—understanding why an agent made a particular decision. The `Narrative` model offers a paradigm-shifting solution by focusing on external, verifiable behavior rather than internal, opaque thought processes.
