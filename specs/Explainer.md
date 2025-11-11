@@ -48,6 +48,17 @@ This entire interaction is made possible by the core concepts of the ontology:
 *   **Delegation:** A formal structure for transferring authority, defining who can do what, for whom, and under what constraints.
 *   **Ledger-Based Accountability:** An immutable record of actions, providing a "paper trail" for auditing, compliance, and troubleshooting.
 
+### 4.1. Unified Ledger: A State Machine for Semantic and Financial Value
+
+A core design philosophy is that the ledger is not just a record of events; it's a unified state machine for value. In this model, "payment" is not a special process but is simply another type of verifiable state change recorded on the ledger.
+
+This approach elegantly connects two types of value:
+
+*   **Semantic Value:** Represents the fulfillment of a promise or the completion of a task. When an agent finishes a job, an `ExecutionRecord` is created, representing a change in the "semantic state" of the system (e.g., a task's status changes from `pending` to `completed`).
+*   **Financial Value:** Represents economic exchange. The change in semantic state (the completed task) can then trigger a change in the "financial state"—a `PaymentIntent` that results in value transfer.
+
+By treating both task completion and payment as state changes within the same ledger, we create a powerful, auditable link between work and compensation. This provides a single source of truth for the entire lifecycle of a delegation, from semantic agreement to financial settlement.
+
 ## 5. Who Is This For?
 
 *   **OS & Platform Developers:** To build next-generation "agent-native" operating systems.
