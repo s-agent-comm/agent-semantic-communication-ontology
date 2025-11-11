@@ -258,25 +258,40 @@ Our `Narrative` model finds a striking parallel here:
 
 By viewing `Narrative`s through Luhmann's lens, we gain a deeper understanding of how our ontology facilitates the emergence of truly autonomous and self-organizing digital societies.
 
-## 6. Architectural Analogy: Mapping to Foundational Protocols
+## 6. Position within the TCP/IP Stack: A Semantic Payload
 
-The design philosophy of this ontology mirrors the principles that have made foundational protocols like TCP/IP, QUIC, and Instruction Set Architectures (ISAs) successful and enduring. Understanding these analogies clarifies the robustness and long-term vision of our approach.
+The relationship of our ontology to foundational protocols like TCP/IP is not an analogy but a direct, technical positioning. Our framework defines the **application-layer payload** that is transported by these protocols.
 
-### 6.1. Analogy to TCP/IP: The Art of Layering and Decoupling
+Here is the concrete data flow:
 
-The genius of the TCP/IP stack is its strict layering, which separates the problem of routing data (IP) from the problem of ensuring its reliable transmission (TCP) and its ultimate meaning (Application Layer). Our ontology applies the same principle:
+1.  **Serialization:** A `CommunicativeAct` (e.g., an `Intent` or `Delegation`) is serialized into a byte stream. This is typically done using a format like JSON-LD (for text) or a more compact binary format like CBOR-LD.
+2.  **Encapsulation:** This byte stream becomes the **literal payload** for an application-layer protocol (like HTTP or WebSockets) or directly for a transport-layer protocol.
+    *   When sent over HTTP, this payload is the body of an HTTP request/response. The HTTP layer then hands this data to TCP.
+    *   The **TCP layer** takes this data, encapsulates it within a TCP segment, adding its own header for reliability and ordering.
+    *   The **IP layer** then takes the TCP segment, encapsulates it within an IP packet, adding its header for routing.
+3.  **Transmission:** The IP packet is sent over the physical network.
 
-*   **It operates above the transport layer:** We are agnostic to the underlying network (like IP) and transport protocols (like TCP, HTTP, WebSockets).
-*   **It defines a new "Semantic Contract Layer":** Situated above the application layer, our standard decouples the *meaning, trust, and consequences* of an interaction from the mere transmission of its data. This ensures its adaptability to any future evolution of the internet.
+Crucially, to the TCP/IP stack, our payload is an **opaque stream of bytes**. The transport and network layers are only concerned with getting these bytes from point A to point B.
 
-### 6.2. Analogy to QUIC: Pragmatism Over Theoretical Purity
+Our ontology's role is to provide the **verifiable semantics for this opaque payload**. It is the "language" that allows the receiving agent to parse these bytes and understand their rich meaning, trust, and consequences, transforming a simple data transfer into a secure and accountable interaction.
+
+### 6.2. Extensibility as the Enabler for Transport Diversity
+
+The ability of our ontology to seamlessly operate over diverse transport protocols like TCP (reliable) and UDP (unreliable) is a direct result of its **inherent extensibility**. The framework does not enforce a single interaction model; instead, it provides a toolbox of `CommunicativeAct`s that can be combined to suit different reliability requirements.
+
+*   **Mirroring TCP's Reliability:** For critical actions where delivery confirmation is essential (e.g., a legally binding `Delegate` act), the interaction can be designed at the semantic level to require a corresponding `Ack` (Acknowledge) act. This creates a logical, application-layer handshake that mirrors the reliability guarantees of TCP.
+*   **Leveraging UDP's Speed:** For high-frequency, low-stakes communications where speed is critical and some data loss is acceptable (e.g., a stream of sensor data `Report`s), the `CommunicativeAct` can be designed as a "fire-and-forget" interaction, perfectly matching the semantics of UDP.
+
+It is this very extensibility—the ability to define different "language games" with different rules for acknowledgement and reliability—that makes our ontology a truly universal payload, capable of being transported by any present or future protocol.
+
+### 6.3. Analogy to QUIC: Pragmatism Over Theoretical Purity
 
 QUIC (a modern transport protocol built on UDP) represents a pragmatic evolution of TCP, acknowledging that a one-size-fits-all approach to reliability is not always efficient. Our `Unified Narrative` model embodies a similar pragmatism:
 
 *   **It differentiates communication acts:** A theoretically "pure" system might demand that every single communication act undergo a costly consensus process.
 *   **It allows for varied costs and consistency:** Our model allows for low-stakes negotiation acts (`Query`, `Report`) to be handled more like lightweight UDP packets, while high-stakes contractual acts (`Delegate`, `Complete`) require stronger, TCP-like guarantees. This balances theoretical elegance with real-world performance and efficiency.
 
-### 6.3. Analogy to Instruction Set Architectures (ISA): A Stable Contract
+### 6.4. Analogy to Instruction Set Architectures (ISA): A Stable Contract
 
 An ISA (like x86 or ARM) provides a stable abstraction layer between software and hardware, allowing any compliant software to run on any compliant hardware. Our ontology serves as the **Instruction Set Architecture for Agent Societies**:
 
